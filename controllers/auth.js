@@ -3,9 +3,9 @@ const Book= require("../models/book.js");
 
 exports.bookInsert = async (req, res) => {
     try {
-        // 1. destructure name, email, password from req.body
+     
         const { Author, Title } = req.body;
-        // 2. all fields require validation
+      
         if (!Title.trim()) {
             return res.json({ error: "Title is required" });
         }
@@ -13,14 +13,14 @@ exports.bookInsert = async (req, res) => {
             return res.json({ error: "Author is required" });
         }
 
-        // 5. Create book
+      
         const book = await new Book({
             Author:Author,
             Title:Title,
         }).save();
 
 
-        // 7. send response
+      
         res.json({
                 status:200,
                 msg:"Book Added Successfull ",
